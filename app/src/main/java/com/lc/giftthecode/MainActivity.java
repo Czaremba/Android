@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.lc.giftthecode.apply.ApplySelection;
 import com.lc.giftthecode.donors.DonorActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button mSignin;
+    private Button mApply;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +27,24 @@ public class MainActivity extends AppCompatActivity {
                 NavigateToActvitiy();
             }
         });
+
+        mApply = (Button) findViewById(R.id.apply);
+
+        mApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                apply();
+            }
+        });
     }
 
     private void NavigateToActvitiy(){
         Intent intent = new Intent(this, DonorActivity.class);
+        startActivity(intent);
+    }
+
+    private void apply(){
+        Intent intent = new Intent(this, ApplySelection.class);
         startActivity(intent);
     }
 }

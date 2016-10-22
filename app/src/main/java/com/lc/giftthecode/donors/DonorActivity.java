@@ -43,8 +43,6 @@ public class DonorActivity extends AppCompatActivity {
     private ImageView mImagePickUp;
     private ImageView mImageAgency;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,22 +100,23 @@ public class DonorActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
+
                             String responseData = response.body().string();
                             JSONObject json = new JSONObject(responseData);
-                            mDonorName.setText(json.getString("donor"));
-                            mDonorFood.setText(json.getString("food"));
-                            mDonorLocation.setText(json.getString("location"));
-                            mDonorSchedule.setText(json.getString("time"));
 
-                            setUpUI(json.getInt("time"));
+                            if (!response.equals("")) {
+                                mDonorName.setText(json.getString("donor"));
+                                mDonorFood.setText(json.getString("food"));
+                                mDonorLocation.setText(json.getString("location"));
+                                mDonorSchedule.setText(json.getString("time"));
+                                setUpUI(json.getInt("time"));
+                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
-
                     }
                 });
             }
@@ -125,22 +124,27 @@ public class DonorActivity extends AppCompatActivity {
     }
 
     private void setUpUI(int status){
+        mFab.setVisibility(View.GONE);
+
         if(status == 0){
             mImagePickUp.setImageDrawable(getDrawable(R.drawable.onwayoff));
             mImagePickUp.setImageDrawable(getDrawable(R.drawable.orderoff));
             mImageRespond.setImageDrawable(getDrawable(R.drawable.completeoff));
         } else if (status == 1){
+            mPickedUpButton.setVisibility(View.VISIBLE);
             mImagePickUp.setImageDrawable(getDrawable(R.drawable.onway));
-            mImagePickUp.setImageDrawable(getDrawable(R.drawable.orderoff));
-            mImageRespond.setImageDrawable(getDrawable(R.drawable.completeoff));
+            mImageRespond.setImageDrawable(getDrawable(R.drawable.orderoff));
+            mImageAgency.setImageDrawable(getDrawable(R.drawable.completeoff));
         } else if (status == 2){
+            mPickedUpButton.setVisibility(View.GONE);
             mImagePickUp.setImageDrawable(getDrawable(R.drawable.onway));
-            mImagePickUp.setImageDrawable(getDrawable(R.drawable.order));
-            mImageRespond.setImageDrawable(getDrawable(R.drawable.completeoff));
+            mImageRespond.setImageDrawable(getDrawable(R.drawable.order));
+            mImageAgency.setImageDrawable(getDrawable(R.drawable.completeoff));
         } else if (status == 3){
+            mPickedUpButton.setVisibility(View.GONE);
             mImagePickUp.setImageDrawable(getDrawable(R.drawable.onway));
-            mImagePickUp.setImageDrawable(getDrawable(R.drawable.order));
-            mImageRespond.setImageDrawable(getDrawable(R.drawable.complete));
+            mImageRespond.setImageDrawable(getDrawable(R.drawable.order));
+            mImageAgency.setImageDrawable(getDrawable(R.drawable.complete));
         }
     }
 

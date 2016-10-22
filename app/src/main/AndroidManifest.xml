@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lc.giftthecode">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +19,10 @@
         </activity>
         <activity android:name=".volunteer.VolunteerActivity" />
         <activity android:name=".donors.DonorActivity" />
-        <activity android:name=".donors.AddActivity"></activity>
+        <activity android:name=".donors.AddActivity" />
+        <activity android:name=".apply.ApplySelection" />
+        <activity android:name=".apply.ApplyDonateActivity" />
+        <activity android:name=".apply.ApplyVolunteerActivity"></activity>
     </application>
 
 </manifest>

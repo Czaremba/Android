@@ -30,26 +30,26 @@
 
             <TextView
                 android:id="@+id/donorname"
-                android:text="Starbucks"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/donorfood"
-                android:text="Food"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
 
             <TextView
                 android:id="@+id/donorlocation"
-                android:text="location"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/donorschedule"
-                android:text="schedule"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -89,6 +89,7 @@
             android:layout_marginTop="30dp"
             android:layout_below="@+id/imageslayout"
             android:text="Picked Up"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

@@ -29,6 +29,7 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/apply"
         android:layout_marginTop="10dp"
         android:text="Apply"
         android:layout_width="match_parent"

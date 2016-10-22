@@ -1,22 +1,23 @@
-package com.lc.giftthecode.donors;
+package com.lc.giftthecode.apply;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.Button;
 
 import com.lc.giftthecode.R;
 
-public class AddActivity extends AppCompatActivity {
+public class ApplySelection extends AppCompatActivity {
 
+    private Button mDonor;
+    private Button mVolunteer;
     private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
+        setContentView(R.layout.activity_apply_selection);
 
         setUpToolbar();
     }
@@ -30,26 +31,13 @@ public class AddActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.donor_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_add:
-                sendDeliveries();
-                return true;
             case android.R.id.home:
                 finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    private void sendDeliveries() {
-        Toast.makeText(this, "Send to server", Toast.LENGTH_SHORT).show();
     }
 }
