@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,6 +44,9 @@ public class DonorActivity extends AppCompatActivity {
     private ImageView mImagePickUp;
     private ImageView mImageAgency;
 
+    private Toolbar mToolbar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +78,8 @@ public class DonorActivity extends AppCompatActivity {
         mImagePickUp = (ImageView) findViewById(R.id.pickup);
 
         getDelivery();
+
+        setUpToolbar();
     }
 
     private void getDelivery(){
@@ -104,14 +110,13 @@ public class DonorActivity extends AppCompatActivity {
                             String responseData = response.body().string();
                             JSONObject json = new JSONObject(responseData);
 
-                            if (!response.equals("")) {
+                            if (!responseData.equals("")) {
                                 mDonorName.setText(json.getString("donor"));
                                 mDonorFood.setText(json.getString("food"));
                                 mDonorLocation.setText(json.getString("location"));
                                 mDonorSchedule.setText(json.getString("time"));
                                 setUpUI(json.getInt("time"));
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         } catch (IOException e) {
@@ -150,7 +155,7 @@ public class DonorActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.donor_menu, menu);
+//        getMenuInflater().inflate(R.menu.donor_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -197,6 +202,12 @@ public class DonorActivity extends AppCompatActivity {
 
         // show it
         alertDialog.show();
+    }
+
+    private void setUpToolbar(){
+        mToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(mToolbar);
+        setTitle("Donate Today");
     }
 
     private void pickedUp(){

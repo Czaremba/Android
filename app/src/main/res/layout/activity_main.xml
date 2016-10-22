@@ -11,7 +11,13 @@
     android:orientation="vertical"
     tools:context="com.lc.giftthecode.MainActivity">
 
+    <ImageView
+        android:src="@drawable/secondharvest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <EditText
+        android:layout_marginTop="40dp"
         android:hint="Username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

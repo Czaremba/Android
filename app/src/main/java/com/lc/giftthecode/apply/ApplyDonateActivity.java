@@ -17,6 +17,7 @@ public class ApplyDonateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply_donate);
+        setUpToolbar();
     }
 
     private void setUpToolbar(){
