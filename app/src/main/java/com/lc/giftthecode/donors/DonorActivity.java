@@ -116,7 +116,6 @@ public class DonorActivity extends AppCompatActivity {
                                 mDonorLocation.setText(json.getString("location"));
                                 mDonorSchedule.setText(json.getString("takeBy"));
                                 setUpUI(json.getInt("status"));
-//                            setUpUI(3);
 //                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -159,15 +158,15 @@ public class DonorActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.donor_menu, menu);
+        getMenuInflater().inflate(R.menu.donormenu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_add:
-                addActivity();
+            case R.id.action_refresh:
+                getDelivery();
             default:
                 return super.onOptionsItemSelected(item);
         }
