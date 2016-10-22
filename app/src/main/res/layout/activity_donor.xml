@@ -12,16 +12,83 @@
         android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:text="Food Donations"
+        <LinearLayout
+            android:id="@+id/layoutdelivery"
+            android:padding="16dp"
+            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/donorname"
+                android:text="Starbucks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/donorfood"
+                android:text="Food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/donorlocation"
+                android:text="location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/donorschedule"
+                android:text="schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/imageslayout"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:background="#00ff00"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                />
+
+            <ImageView
+                android:layout_marginLeft="16dp"
+                android:background="#00ff99"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <ImageView
+                android:layout_marginLeft="16dp"
+                android:background="#00ff22"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pickedup"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/imageslayout"
+            android:text="Picked Up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
