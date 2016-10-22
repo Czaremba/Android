@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".volunteer.VolunteerActivity" />
-        <activity android:name=".donors.DonorActivity"></activity>
+        <activity android:name=".donors.DonorActivity" />
+        <activity android:name=".donors.AddActivity"></activity>
     </application>
 
 </manifest>
