@@ -62,20 +62,20 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:background="#00ff00"
+                android:background="@drawable/onwayoff"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 />
 
             <ImageView
+                android:background="@drawable/orderoff"
                 android:layout_marginLeft="16dp"
-                android:background="#00ff99"
                 android:layout_width="50dp"
                 android:layout_height="50dp" />
 
             <ImageView
+                android:background="@drawable/completeoff"
                 android:layout_marginLeft="16dp"
-                android:background="#00ff22"
                 android:layout_width="50dp"
                 android:layout_height="50dp" />
         </LinearLayout>
