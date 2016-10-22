@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,11 @@ public class DonorActivity extends AppCompatActivity {
     private TextView mDonorLocation;
     private TextView mDonorSchedule;
 
+    private ImageView mImageRespond;
+    private ImageView mImagePickUp;
+    private ImageView mImageAgency;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +71,10 @@ public class DonorActivity extends AppCompatActivity {
         mDonorLocation = (TextView) findViewById(R.id.donorlocation);
         mDonorSchedule = (TextView) findViewById(R.id.donorschedule);
 
+        mImageRespond = (ImageView) findViewById(R.id.respond);
+        mImageAgency = (ImageView) findViewById(R.id.agency);
+        mImagePickUp = (ImageView) findViewById(R.id.pickup);
+
         getDelivery();
     }
 
@@ -91,19 +101,15 @@ public class DonorActivity extends AppCompatActivity {
                 DonorActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-//                        Toast.makeText(DonorActivity.this, "success", Toast.LENGTH_SHORT).show();
                         try {
                             String responseData = response.body().string();
                             JSONObject json = new JSONObject(responseData);
-
-//                            String responseData = response.body().string();
-//                            JSONObject json = new JSONObject(responseData);
-//                            final String owner = json.getString("name");
-
                             mDonorName.setText(json.getString("donor"));
                             mDonorFood.setText(json.getString("food"));
                             mDonorLocation.setText(json.getString("location"));
                             mDonorSchedule.setText(json.getString("time"));
+
+                            setUpUI(json.getInt("time"));
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -116,6 +122,26 @@ public class DonorActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void setUpUI(int status){
+        if(status == 0){
+            mImagePickUp.setImageDrawable(getDrawable(R.drawable.onwayoff));
+            mImagePickUp.setImageDrawable(getDrawable(R.drawable.orderoff));
+            mImageRespond.setImageDrawable(getDrawable(R.drawable.completeoff));
+        } else if (status == 1){
+            mImagePickUp.setImageDrawable(getDrawable(R.drawable.onway));
+            mImagePickUp.setImageDrawable(getDrawable(R.drawable.orderoff));
+            mImageRespond.setImageDrawable(getDrawable(R.drawable.completeoff));
+        } else if (status == 2){
+            mImagePickUp.setImageDrawable(getDrawable(R.drawable.onway));
+            mImagePickUp.setImageDrawable(getDrawable(R.drawable.order));
+            mImageRespond.setImageDrawable(getDrawable(R.drawable.completeoff));
+        } else if (status == 3){
+            mImagePickUp.setImageDrawable(getDrawable(R.drawable.onway));
+            mImagePickUp.setImageDrawable(getDrawable(R.drawable.order));
+            mImageRespond.setImageDrawable(getDrawable(R.drawable.complete));
+        }
     }
 
     @Override

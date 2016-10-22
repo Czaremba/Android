@@ -62,18 +62,21 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/respond"
                 android:background="@drawable/onwayoff"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 />
 
             <ImageView
+                android:id="@+id/pickup"
                 android:background="@drawable/orderoff"
                 android:layout_marginLeft="16dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp" />
 
             <ImageView
+                android:id="@+id/agency"
                 android:background="@drawable/completeoff"
                 android:layout_marginLeft="16dp"
                 android:layout_width="50dp"
