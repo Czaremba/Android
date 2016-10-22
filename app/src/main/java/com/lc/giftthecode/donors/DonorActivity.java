@@ -116,6 +116,7 @@ public class DonorActivity extends AppCompatActivity {
                                 mDonorLocation.setText(json.getString("location"));
                                 mDonorSchedule.setText(json.getString("takeBy"));
                                 setUpUI(json.getInt("status"));
+//                            setUpUI(3);
 //                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -136,16 +137,19 @@ public class DonorActivity extends AppCompatActivity {
             mImagePickUp.setBackground(getDrawable(R.drawable.orderoff));
             mImageAgency.setBackground(getDrawable(R.drawable.completeoff));
         } else if (status == 1){
+            mFab.setVisibility(View.GONE);
             mPickedUpButton.setVisibility(View.VISIBLE);
             mImageRespond.setBackground(getDrawable(R.drawable.onway));
             mImagePickUp.setBackground(getDrawable(R.drawable.orderoff));
             mImageAgency.setBackground(getDrawable(R.drawable.completeoff));
         } else if (status == 2){
+            mFab.setVisibility(View.GONE);
             mPickedUpButton.setVisibility(View.GONE);
             mImageRespond.setBackground(getDrawable(R.drawable.onway));
             mImagePickUp.setBackground(getDrawable(R.drawable.order));
             mImageAgency.setBackground(getDrawable(R.drawable.completeoff));
         } else if (status == 3){
+            mFab.setVisibility(View.GONE);
             mPickedUpButton.setVisibility(View.GONE);
             mImageRespond.setBackground(getDrawable(R.drawable.onway));
             mImagePickUp.setBackground(getDrawable(R.drawable.order));
