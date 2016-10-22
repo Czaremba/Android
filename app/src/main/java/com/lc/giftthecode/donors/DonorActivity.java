@@ -110,13 +110,13 @@ public class DonorActivity extends AppCompatActivity {
                             String responseData = response.body().string();
                             JSONObject json = new JSONObject(responseData);
 
-                            if (!responseData.equals("")) {
+//                            if (!responseData.equals("")) {
                                 mDonorName.setText(json.getString("donor"));
                                 mDonorFood.setText(json.getString("food"));
                                 mDonorLocation.setText(json.getString("location"));
                                 mDonorSchedule.setText(json.getString("time"));
                                 setUpUI(json.getInt("time"));
-                            }
+//                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         } catch (IOException e) {
