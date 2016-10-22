@@ -21,6 +21,7 @@
     <Button
         android:id="@+id/buttondonate"
         android:text="Donate"
+        android:textColor="#FFF"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="30dp"
@@ -30,6 +31,7 @@
     <Button
         android:id="@+id/buttonvolunteer"
         android:text="Volunteer"
+        android:textColor="#FFF"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"

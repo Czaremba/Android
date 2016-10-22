@@ -114,8 +114,8 @@ public class DonorActivity extends AppCompatActivity {
                                 mDonorName.setText(json.getString("donor"));
                                 mDonorFood.setText(json.getString("food"));
                                 mDonorLocation.setText(json.getString("location"));
-                                mDonorSchedule.setText(json.getString("time"));
-                                setUpUI(json.getInt("time"));
+                                mDonorSchedule.setText(json.getString("takeBy"));
+                                setUpUI(json.getInt("status"));
 //                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -129,27 +129,27 @@ public class DonorActivity extends AppCompatActivity {
     }
 
     private void setUpUI(int status){
-        mFab.setVisibility(View.GONE);
+//        mFab.setVisibility(View.GONE);
 
         if(status == 0){
-            mImagePickUp.setImageDrawable(getDrawable(R.drawable.onwayoff));
-            mImagePickUp.setImageDrawable(getDrawable(R.drawable.orderoff));
-            mImageRespond.setImageDrawable(getDrawable(R.drawable.completeoff));
+            mImageRespond.setBackground(getDrawable(R.drawable.onwayoff));
+            mImagePickUp.setBackground(getDrawable(R.drawable.orderoff));
+            mImageAgency.setBackground(getDrawable(R.drawable.completeoff));
         } else if (status == 1){
             mPickedUpButton.setVisibility(View.VISIBLE);
-            mImagePickUp.setImageDrawable(getDrawable(R.drawable.onway));
-            mImageRespond.setImageDrawable(getDrawable(R.drawable.orderoff));
-            mImageAgency.setImageDrawable(getDrawable(R.drawable.completeoff));
+            mImageRespond.setBackground(getDrawable(R.drawable.onway));
+            mImagePickUp.setBackground(getDrawable(R.drawable.orderoff));
+            mImageAgency.setBackground(getDrawable(R.drawable.completeoff));
         } else if (status == 2){
             mPickedUpButton.setVisibility(View.GONE);
-            mImagePickUp.setImageDrawable(getDrawable(R.drawable.onway));
-            mImageRespond.setImageDrawable(getDrawable(R.drawable.order));
-            mImageAgency.setImageDrawable(getDrawable(R.drawable.completeoff));
+            mImageRespond.setBackground(getDrawable(R.drawable.onway));
+            mImagePickUp.setBackground(getDrawable(R.drawable.order));
+            mImageAgency.setBackground(getDrawable(R.drawable.completeoff));
         } else if (status == 3){
             mPickedUpButton.setVisibility(View.GONE);
-            mImagePickUp.setImageDrawable(getDrawable(R.drawable.onway));
-            mImageRespond.setImageDrawable(getDrawable(R.drawable.order));
-            mImageAgency.setImageDrawable(getDrawable(R.drawable.complete));
+            mImageRespond.setBackground(getDrawable(R.drawable.onway));
+            mImagePickUp.setBackground(getDrawable(R.drawable.order));
+            mImageAgency.setBackground(getDrawable(R.drawable.complete));
         }
     }
 
@@ -211,6 +211,6 @@ public class DonorActivity extends AppCompatActivity {
     }
 
     private void pickedUp(){
-        Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "The delivery has been picked up", Toast.LENGTH_SHORT).show();
     }
 }
