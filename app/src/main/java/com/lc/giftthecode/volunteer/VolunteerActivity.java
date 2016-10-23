@@ -1,6 +1,9 @@
 package com.lc.giftthecode.volunteer;
 
+import android.annotation.TargetApi;
 import android.content.DialogInterface;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -40,112 +43,20 @@ public class VolunteerActivity extends AppCompatActivity {
 
         TabLayout tablayout = (TabLayout) findViewById(R.id.tabs);
 
-        tablayout.setupWithViewPager(viewPager);
-        //ArrayList<SearchResults> searchResults = GetSearchResults();
-        //final ListView lv = (ListView) findViewById(R.id.listview);
-        //lv.setAdapter(new MyCustomBaseAdapter(this, searchResults));
+        tablayout.setupWithViewPager(viewPager);}
 
-
-       // lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-          //  @Override
-            //public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-              //  Object o = lv.getItemAtPosition(position);
-               // SearchResults fullObject = (SearchResults)o;
-                AlertDialog.Builder dialog = new AlertDialog.Builder(VolunteerActivity.this).setMessage("Are you sure you want to take on this job?").setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast toast = Toast.makeText(VolunteerActivity.this, "YESS!!", Toast.LENGTH_LONG);
-                        toast.show();
-                    }
-                })
-                        .setNegativeButton("no", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast toast = Toast.makeText(VolunteerActivity.this, "NO!!!", Toast.LENGTH_LONG);
-                                toast.show();
-                            }
-                        });
-                dialog.show();
-            }
-
-    //private ArrayList<SearchResults> GetSearchResults(){
-       // ArrayList<SearchResults> results = new ArrayList<SearchResults>();
-
-        //SearchResults sr = new SearchResults();
-        //sr.setDonorName("Starbucks");
-        //sr.setFood("Sandwiches: 10lb");
-        //sr.setLocation("200 Bay St, Toronto");
-        //sr.setTime("Time For Pickup: 2:30pm");
-        //results.add(sr);
-
-        /*sr = new SearchResults();
-        sr.setDonorName("Kensington Market");
-        sr.setFood("Vegetables: 75lb, Meat: 50lb, Dried Foods: 40lb");
-        sr.setLocation("Kensington Ave, Toronto");
-        sr.setTime("Time For Pickup: 7:00pm");
-        results.add(sr);
-
-        sr = new SearchResults();
-        sr.setDonorName("Tim Hortons");
-        sr.setFood("Baked Goods: 25lb, Bread: 30lb");
-        sr.setLocation("Simcoe Place, 340 Front St W, Toronto");
-        sr.setTime("Time For Pickup: 3:45pm");
-        results.add(sr);
-
-        sr = new SearchResults();
-        sr.setDonorName("McDonald's");
-        sr.setFood("Poultry: 50lb, Baked Goods: 10lb");
-        sr.setLocation("675 Yonge St, Toronto");
-        sr.setTime("Time For Pickup: 4:20pm");
-        results.add(sr);
-
-        sr = new SearchResults();
-        sr.setDonorName("Luciano's No Frills");
-        sr.setFood("Beef - 20lb, Vegetables - 45lb");
-        sr.setLocation("200 Front St E, Toronto");
-        sr.setTime("Time For Pickup: 6:30pm");
-        results.add(sr);
-
-
-
-        sr = new SearchResults();
-        sr.setDonorName("Donald Fagen");
-        sr.setFood("Los Angeles, CA");
-        sr.setLocation("424-555-1234");
-        results.add(sr);
-
-        sr = new SearchResults();
-        sr.setDonorName("Steve Rude");
-        sr.setFood("Oakland, CA");
-        sr.setLocation("515-555-2222");
-        results.add(sr);
-
-        sr = new SearchResults();
-        sr.setDonorName("Roland Bloom");
-        sr.setFood("Chelmsford, MA");
-        sr.setLocation("978-555-1111");
-        results.add(sr);
-
-        sr = new SearchResults();
-        sr.setDonorName("Sandy Baguskas");
-        sr.setFood("Chelmsford, MA");
-        sr.setLocation("978-555-2222");
-        results.add(sr);
-
-        sr = new SearchResults();
-        sr.setDonorName("Scott Taylor");
-        sr.setFood("Austin, TX");
-        sr.setLocation("512-555-2222");
-        results.add(sr);
-
-        return results;
-    }
-    */
 
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new OneFragment(), "Unassigned Food Pickups");
         adapter.addFragment(new TwoFragment(), "Food Pickups I'm Assigned");
-        viewPager.setAdapter(adapter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
+            viewPager.setAdapter(adapter);
+        }else{
+            AlertDialog.Builder dialog1 = new AlertDialog.Builder(VolunteerActivity.this).setMessage("Your version of Android is too old to run this App properly, Please update to a newer version and try again");
+            dialog1.show();
+        }
     }}
 
 class ViewPagerAdapter extends FragmentPagerAdapter {
