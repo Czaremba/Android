@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.lc.giftthecode.donors.DonorActivity;
+import com.lc.giftthecode.volunteer.VolunteerActivity;
+import com.lc.giftthecode.volunteer.VolunteeringBlank;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void NavigateToActvitiy(){
-        Intent intent = new Intent(this, DonorActivity.class);
+        Intent intent = new Intent(this, VolunteerActivity.class);
         startActivity(intent);
     }
 }
