@@ -1,9 +1,6 @@
 package com.lc.giftthecode.volunteer;
 
-import android.annotation.TargetApi;
-import android.content.DialogInterface;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,14 +10,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
-import com.lc.giftthecode.MainActivity;
 import com.lc.giftthecode.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
+
 
 public class VolunteerActivity extends AppCompatActivity {
 

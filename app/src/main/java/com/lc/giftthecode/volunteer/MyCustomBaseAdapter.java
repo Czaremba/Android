@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.lc.giftthecode.volunteer.OneFragment.*;
 
 public class MyCustomBaseAdapter extends BaseAdapter {
     private static ArrayList<SearchResults> searchArrayList;
@@ -18,6 +19,10 @@ public class MyCustomBaseAdapter extends BaseAdapter {
     public MyCustomBaseAdapter(Context context, ArrayList<SearchResults> results) {
         searchArrayList = results;
         mInflater = LayoutInflater.from(context);
+    }
+
+    public void updateSearchArrayList(ArrayList<SearchResults> newList){
+        searchArrayList = newList;
     }
 
     public int getCount() {
@@ -37,10 +42,10 @@ public class MyCustomBaseAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.custom_row_view, null);
             holder = new ViewHolder();
-            holder.txtName = (TextView) convertView.findViewById(R.id.name);
-            holder.txtCityState = (TextView) convertView
+            holder.txtDonorName = (TextView) convertView.findViewById(R.id.name);
+            holder.txtFood = (TextView) convertView
                     .findViewById(R.id.cityState);
-            holder.txtPhone = (TextView) convertView.findViewById(R.id.phone);
+            holder.txtLocation = (TextView) convertView.findViewById(R.id.phone);
             holder.txtTime = (TextView) convertView.findViewById(R.id.time);
 
             convertView.setTag(holder);
@@ -48,18 +53,20 @@ public class MyCustomBaseAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.txtName.setText(searchArrayList.get(position).getDonorName());
-        holder.txtCityState.setText(searchArrayList.get(position)
+
+
+        holder.txtDonorName.setText(searchArrayList.get(position).getDonorName());
+        holder.txtFood.setText(searchArrayList.get(position)
                 .getFood());
-        holder.txtPhone.setText(searchArrayList.get(position).getLocation());
+        holder.txtLocation.setText(searchArrayList.get(position).getLocation());
         holder.txtTime.setText(searchArrayList.get(position).getTime());
         return convertView;
     }
 
     static class ViewHolder {
-        TextView txtName;
-        TextView txtCityState;
-        TextView txtPhone;
+        TextView txtDonorName;
+        TextView txtFood;
+        TextView txtLocation;
         TextView txtTime;
     }
 }

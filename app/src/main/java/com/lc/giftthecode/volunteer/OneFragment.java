@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ContentFrameLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,11 @@ import com.lc.giftthecode.R;
 
 import java.util.ArrayList;
 
+
+
 public class OneFragment extends Fragment {
+
+    private ArrayList<SearchResults> results = new ArrayList<SearchResults>();
 
     public OneFragment() {
         // Required empty public constructor
@@ -26,6 +31,7 @@ public class OneFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -33,24 +39,30 @@ public class OneFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.listoffood, container, false);
-        final ArrayList<SearchResults> searchResults = GetSearchResults();
+        ArrayList<SearchResults> searchResults = GetSearchResults();
         final ListView lv = (ListView) v.findViewById(R.id.listview);
-        lv.setAdapter(new MyCustomBaseAdapter(getActivity(), searchResults));
+        final MyCustomBaseAdapter m = new MyCustomBaseAdapter(getActivity(), searchResults);
+        lv.setAdapter(m);
 
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final android.view.View view, final int position, long id) {
-                final Object o = lv.getItemAtPosition(position);
-                SearchResults fullObject = (SearchResults) o;
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity()).setMessage("Are you sure you want to take on this job?").setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast toast = Toast.makeText(getActivity(), "YESS!!", Toast.LENGTH_LONG);
-                        toast.show();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity()).setMessage("Are you sure you want to take on this job?")
+                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Toast toast = Toast.makeText(getActivity(), ""+position, Toast.LENGTH_LONG);
+                                //toast.show();
+                                //AlertDialog.Builder dialog1 = new AlertDialog.Builder(getActivity()).setMessage(""+results);
+                                //dialog1.show();
+                                results.remove(position);
+                                m.updateSearchArrayList(results);
+                                m.notifyDataSetChanged();
+                                AlertDialog.Builder dialog2 = new AlertDialog.Builder(getActivity()).setMessage(""+results);
+                                dialog2.show();
 
-
-                    }
-                })
+                            }
+                        })
                         .setNegativeButton("no", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 //Do Nothing
@@ -63,7 +75,7 @@ public class OneFragment extends Fragment {
     }
 
     private ArrayList<SearchResults> GetSearchResults() {
-        ArrayList<SearchResults> results = new ArrayList<SearchResults>();
+
         SearchResults sr = new SearchResults();
         sr.setDonorName("Justin Schultz");
         sr.setFood("San Francisco, CA");
